@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <% if @product.images.present?%>
+  <% @product.images.each do |image|  %>
+    <%= image_tag image %>
+  <%end%>
+  <%end%>
+</p>
+<p>
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
