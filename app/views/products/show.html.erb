@@ -24,3 +24,7 @@
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+
+<h3>Коментарі</h3>
+<%= render @product.comments%>
+<%= render 'comments/form', object:@product %>

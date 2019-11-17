@@ -1,0 +1,15 @@
+<%= form_with(model: Comment.new, local: true) do |form| %>
+
+<%= form.hidden_field :object_id,   value: object.id%>
+<%= form.hidden_field :object_type, value: object.class.name%>
+
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

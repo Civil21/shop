@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :products
 
+  resources :comments, only: %i[create update destroy]
+
   devise_for :users
 
   devise_for :admin_users, ActiveAdmin::Devise.config

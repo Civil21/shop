@@ -1,0 +1,9 @@
+<li id="comment_<%=comment.id%>">
+  <span><%=comment.user.email%></span>
+  <span ><%=time_ago_in_words(comment.created_at) %></span>
+  <div><%=comment.text%></div>
+  <%= render 'comments/form', object:comment%>
+  <ul>
+    <%=render comment.comments %>
+</ul>
+</li>
