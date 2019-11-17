@@ -1,0 +1,41 @@
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-light" id="sidebar">
+  <div class="py-3 px-3 mb-4 bg-dark">
+    <h5 class="title">MENU</h5>
+  </div>
+
+  <ul class="nav flex-column bg-light mb-0">
+    <li class="nav-item">
+      <%= link_to root_path, class:"nav-link" do %>
+                Home
+      <%end%>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                About
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                Services
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                Gallery
+            </a>
+    </li>
+  </ul>
+
+</div>
+<!-- End vertical navbar -->
+
+<script type="text/javascript">
+
+  $(function() {
+    // Sidebar toggle behavior
+    $('#sidebarCollapse').on('click', function() {
+      $('#sidebar, #content').toggleClass('active');
+    });
+  });
+</script>
