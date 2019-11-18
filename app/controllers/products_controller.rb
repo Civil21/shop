@@ -2,6 +2,7 @@
 
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   # GET /products
   # GET /products.json
@@ -15,24 +16,37 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
+    if current_user.id == 1
+      @product = Product.new
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   # GET /products/1/edit
-  def edit; end
+  def edit
+    redirect_back(fallback_location: root_path) unless current_user.id == 1
+  end
 
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    if current_user.id == 1
+      @product = Product.new(product_params)
 
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @product.save
+          format.html { redirect_to @product, notice: 'Product was successfully created.' }
+          format.json { render :show, status: :created, location: @product }
+        else
+          format.html { render :new }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { render :index }
+        # format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,13 +54,20 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+    if current_user.id == 1
+      respond_to do |format|
+        if @product.update(product_params)
+          format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+          format.json { render :show, status: :ok, location: @product }
+        else
+          format.html { render :edit }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { render :index }
+        # format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,10 +75,17 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.id == 1
+      @product.destroy
+      respond_to do |format|
+        format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { render :index }
+        # format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
     end
   end
 

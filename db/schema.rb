@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_145637) do
+ActiveRecord::Schema.define(version: 2019_11_18_123929) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_11_17_145637) do
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
     t.integer "product_id"
-    t.integer "count"
+    t.integer "count", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2019_11_17_145637) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "desc"
-    t.string "price"
+    t.float "price", default: 0.0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

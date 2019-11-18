@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :products
   root 'products#index'
 
-
   resources :comments, only: %i[create update destroy]
 
-  resources :orders
+  resources :orders, except: [:index]
+
+  get 'basket', to: 'orders#index'
 
   devise_for :users
 

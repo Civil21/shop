@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -42,6 +44,8 @@ gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-select-rails'
 gem 'jquery-rails'
+
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

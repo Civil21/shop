@@ -3,7 +3,7 @@
 <p>
   <% if @product.images.present?%>
   <% @product.images.each do |image|  %>
-    <%= image_tag image %>
+    <%= image_tag image,width: 200 %>
   <%end%>
   <%end%>
 </p>
@@ -11,7 +11,9 @@
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
-
+<p>
+  <%= link_to "Замовити", new_order_path(product_id: @product.id), class:'btn btn-success' %>
+</p>
 <p>
   <strong>Desc:</strong>
   <%= @product.desc %>
