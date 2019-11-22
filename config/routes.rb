@@ -10,7 +10,14 @@ Rails.application.routes.draw do
 
   get 'basket', to: 'orders#index'
 
-  devise_for :users
+  resource :my, only: %i[show update] do
+    get 'personal'
+  end
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+  resources :users, only: %i[show index]
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

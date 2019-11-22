@@ -40,6 +40,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'activeadmin'
 gem 'devise'
+gem 'wicked'
+
 # css/js
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-select-rails'
