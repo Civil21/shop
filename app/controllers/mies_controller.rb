@@ -4,7 +4,9 @@ class MiesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user
 
-  def show; end
+  def show
+    @products = Product.all
+  end
 
   def update
     # @user.attributes = user_params

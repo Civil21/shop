@@ -1,1 +1,15 @@
-<li><%= link_to category.name, category_path(category.name) %></li>
+<div class="col-12 col-md-2">
+  <%= link_to category_path(category.name) do %>
+    <div class="tags">
+      <%= category.name %>
+    </div>
+  <%end%>
+</div>
+<script type="text/javascript">
+$(document).on('turbolinks:load', function() {
+  var randomColor = Math.floor(Math.random()*16777215).toString(16);
+  console.log(randomColor);
+  $('.tags').css("background", randomColor);
+//  document.getElementsByClassName('tags').style.background = 'randomColor';
+});
+</script>
