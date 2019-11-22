@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
     @product = Product.find(params[:product_id])
     params[:order][:product_id] = @product.id
     @order = current_user.orders.build(order_params)
-    pp @order
     if @order.save
       redirect_to basket_path
     else

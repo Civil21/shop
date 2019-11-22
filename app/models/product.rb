@@ -7,14 +7,16 @@ class Product < ApplicationRecord
   has_many :categories, through: :tags
   has_many :orders
 
+  def all_tags
+    categories.map(&:name).join(',')
+  end
+
   def all_tags=(names)
     names = names.split(',').map { |name| name.strip.downcase }
     names.delete('')
-    names.to_set.map do |name|
-      Tag.find_or_create_by!(category_id: Category.find_or_create_by!(name: name).id, product_id: id)
-    end
-    tags.map do |tag|
-      tag.destroy unless names.include?(Category.find(tag.category_id).name)
+    categories.clear
+    categories << names.to_set.map do |name|
+      Category.find_or_create_by!(name: name)
     end
   end
 end

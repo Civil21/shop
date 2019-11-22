@@ -31,13 +31,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    all_tags = params[:product][:all_tags]
+    # all_tags = params[:all_tags]
     if current_user.id == 1
       @product = Product.new(product_params)
 
       respond_to do |format|
         if @product.save
-          @product.all_tags = all_tags
+          # @product.all_tags = all_tags
           format.html { redirect_to @product, notice: 'Product was successfully created.' }
           format.json { render :show, status: :created, location: @product }
         else
@@ -100,6 +100,6 @@ class ProductsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def product_params
-    params.require(:product).permit(:name, :desc, :price, images: [])
+    params.require(:product).permit(:name, :desc, :all_tags, :price, images: [])
   end
 end

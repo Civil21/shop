@@ -1,42 +1,40 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= simple_form_for(@product) do |form| %>
+<% if product.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(product.errors.count, "error") %>
+      prohibited this product from being saved:</h2>
 
-      <ul>
+    <ul>
       <% product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :images %>
-    <%= form.file_field :images, accept: 'image/png,image/gif,image/jpeg', multiple: true %>
+    </ul>
   </div>
+<% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<div class="field">
+  <%= form.input :images,as: :file, accept: 'image/png,image/gif,image/jpeg', multiple: true %>
+</div>
 
-  <div class="field">
-    <%= form.label :all_tags %>
-    <%= form.text_field :all_tags %>
-  </div>
+<div class="field">
+  <%= form.input :name %>
+</div>
 
-  <div class="field">
-    <%= form.label :desc %>
-    <%= form.text_field :desc %>
-  </div>
+<div class="field">
+  <%= label_tag :tags%>
+  <%= form.input :all_tags %>
+</div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
+<div class="field">
+  <%= form.input :desc %>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="field">
+  <%= form.input :price %>
+</div>
+
+<div class="actions">
+  <%= form.submit "Відправити", class:"btn btn-success" %>
+</div>
+
 <% end %>
