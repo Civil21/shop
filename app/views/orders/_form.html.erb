@@ -1,5 +1,5 @@
 Замовлення товару <%= @product.name%>
-<%= simple_form_for @order do |f| %>
+<%= simple_form_for(@order, url:product_orders_path)do |f| %>
   Кількість:<%= f.input :count,input_html: { value: '1',min: '1', step: 'any'} %> * <%= @product.price%> = <div id="sum"><%= @product.price%></div>
   <%= f.button :submit %>
 <% end %>

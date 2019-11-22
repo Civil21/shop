@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :products
   root 'products#index'
+  resources :products do
+    resources :orders, only: %i[new create]
+  end
 
   resources :comments, only: %i[create update destroy]
 
-  resources :orders, except: [:index]
-
+  resources :orders, except: %i[index new create]
   get 'basket', to: 'orders#index'
 
   resource :my, only: %i[show update] do

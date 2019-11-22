@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
-  belongs_to :users
-  belongs_to :object
+  belongs_to :user
+  belongs_to :product
 end
