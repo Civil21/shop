@@ -31,11 +31,13 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    all_tags = params[:product][:all_tags]
     if current_user.id == 1
       @product = Product.new(product_params)
 
       respond_to do |format|
         if @product.save
+          @product.all_tags = all_tags
           format.html { redirect_to @product, notice: 'Product was successfully created.' }
           format.json { render :show, status: :created, location: @product }
         else

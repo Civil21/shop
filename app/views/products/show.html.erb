@@ -12,6 +12,10 @@
   <%= @product.name %>
 </p>
 <p>
+  <strong>ТЕГИ:</strong>
+  <%= tags(@product) %>
+</p>
+<p>
   <%= link_to "Замовити", new_order_path(product_id: @product.id), class:'btn btn-success' %>
 </p>
 <p>
