@@ -45,6 +45,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-select-rails'
 gem 'jquery-rails'
+gem "font-awesome-rails"
 
 gem 'simple_form'
 

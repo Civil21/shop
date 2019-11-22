@@ -1,47 +1,71 @@
 <!-- Vertical navbar -->
-<div class="vertical-nav bg-light" id="sidebar">
+<div class="vertical-nav bg-light active" id="sidebar">
   <div class="py-3 px-3 mb-4 bg-dark">
-    <h5 class="title">MENU</h5>
+    <h5 class="title">МЕНЮ</h5>
   </div>
+
+  <p class="text-gray font-weight-bold text-uppercase px-3 pb-4 mb-0">Основне</p>
 
   <ul class="nav flex-column bg-light mb-0">
     <li class="nav-item">
       <%= link_to root_path, class:"nav-link" do %>
-                Home
+        <i class="fa fa-shopping-cart mr-2"></i>
+        Товари
       <%end%>
     </li>
     <li class="nav-item">
       <a href="#" class="nav-link text-dark font-italic">
-                About
-            </a>
+        <i class="fa fa-info-circle mr-2"></i>
+        Про нас
+      </a>
     </li>
     <li class="nav-item">
       <a href="#" class="nav-link text-dark font-italic">
-                Services
-            </a>
+          <i class="fa fa-tags mr-2"></i>
+          Категорії
+      </a>
     </li>
     <li class="nav-item">
-      <%=link_to "Basket", basket_path, class:"nav-link"%>
+      <%=link_to basket_path, class:"nav-link" do %>
+        <i class="fa fa-shopping-basket mr-2"></i>
+        Кошик
+      <%end%>
     </li>
+
+  </ul>
+  <br>
+  <p class="text-gray font-weight-bold text-uppercase px-3 pb-4 mb-0">Профіль</p>
+  <ul class="nav flex-column  bg-light mb-0" style="vertical-align:bottom;">
     <%if user_signed_in?%>
     <li class="nav-item">
-      <%= link_to "LOGOUT", destroy_user_session_path, method: :delete, class:"nav-link" %>
+      <% if current_user.id ==1 %>
+      <%= link_to new_product_path, class:"nav-link"  do%>
+        <i class="fa fa-plus-circle mr-2"></i>
+        Добавити продукт
+      <%end%>
+      <%end%>
     </li>
     <li class="nav-item">
-      <% if current_user.id ==1 %>
-      <%= link_to 'New Product', new_product_path, class:"nav-link"  %>
+      <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+        <i class="fa fa-sign-out mr-2"></i>
+        Вийти
       <%end%>
     </li>
     <%else%>
     <li class="nav-item">
-      <%= link_to "SIGN UP", new_user_registration_path,class:"nav-link"%>
+      <%= link_to new_user_session_path,class:"nav-link" do %>
+        <i class="fa fa-sign-in mr-2"></i>
+        Вхід
+      <%end%>
     </li>
     <li class="nav-item">
-      <%= link_to "SIGN IN", new_user_session_path,class:"nav-link"%>
+      <%= link_to new_user_registration_path,class:"nav-link" do %>
+        <i class="fa fa-child mr-2"></i>
+        Реєестрація
+      <%end%>
     </li>
     <%end%>
   </ul>
-
 </div>
 <!-- End vertical navbar -->
 
