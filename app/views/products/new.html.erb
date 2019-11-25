@@ -1,5 +1,13 @@
-<h1>New Product</h1>
-
-<%= render 'form', product: @product %>
-
-<%= link_to 'Back', products_path %>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <h1>Добавити продукт</h1>
+        </div>
+        <%= render 'form', product: @product %>
+        <div id="formFooter">
+        <%= link_to 'Back', products_path %>
+      </div>
+    </div>
+  </div>
+</div>
