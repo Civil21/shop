@@ -1,27 +1,35 @@
-<h1>Розкажіть трішки про себе.</h1>
 
-<%=simple_form_for(@user, url: my_path) do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <h1>Розкажіть трішки про себе</h1>
+      </div>
+        <%=simple_form_for(@user, url: my_path) do |f| %>
+          <% if @user.errors.any? %>
+            <div class="error_messages">
+              <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+              <ul>
+              <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <div class="field">
+          <%= f.input :city, type:"text", input_html: { class: 'special'}, placeholder:"Місто", autofocus: true, autocomplete: "city", label: false %>
+        </div>
+
+        <div class="field">
+          <%= f.input :about, input_html: { class: 'special'}, placeholder:"Опишіть себе", as: :text, rows: 5,label: false %>
+        </div>
+
+
+        <div class="actions">
+          <%= f.submit "Продовжити" %>
+        </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-<div class="field">
-  <%= f.input :city, autofocus: true, autocomplete: "city" %>
-</div>
-
-<div class="field">
-  <%= f.input :about, as: :text, rows: 5 %>
-</div>
-
-
-<div class="actions">
-  <%= f.submit "Continue" %>
-</div>
-<% end %>
+  </div>

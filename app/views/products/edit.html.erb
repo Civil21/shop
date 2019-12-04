@@ -1,6 +1,14 @@
-<h1>Editing Product</h1>
-
-<%= render 'form', product: @product %>
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <h1>Редагувати продукт</h1>
+        </div>
+        <%= render 'form', product: @product %>
+        <div id="formFooter">
+          <%= link_to 'Show', @product %> |
+          <%= link_to 'Back', products_path %>
+      </div>
+    </div>
+  </div>
+</div>
