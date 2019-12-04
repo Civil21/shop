@@ -8,10 +8,21 @@
       <% product.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
+<<<<<<< HEAD
     </ul>
+=======
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Назва продукту" %><br>
+    <%= form.text_field :name, placeholder: "Назва продукту" %>
+>>>>>>> d910512adf968f30063c0251e242a9f13b9b8661
   </div>
 <% end %>
 
+<<<<<<< HEAD
 <div class="field">
   <%= form.input :images,as: :file, accept: 'image/png,image/gif,image/jpeg', multiple: true %>
 </div>
@@ -37,4 +48,28 @@
   <%= form.submit "Відправити", class:"btn btn-success" %>
 </div>
 
+=======
+  <div class="field">
+    <%= form.label "Укажіть теги для продукту" %><br>
+    <%= form.text_field :all_tags, placeholder:"Теги до продукту" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Добавте опис продукту" %><br>
+    <%= form.text_field :desc, placeholder:"Опис продукту" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Укажіть ціну"%><br>
+    <%= form.text_field :price %>
+  </div>
+  <div class="field">
+    <%= form.label "Фото" %><br>
+    <%= form.file_field :images, accept: 'image/png,image/gif,image/jpeg', multiple: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Створити продукт" %>
+  </div>
+>>>>>>> d910512adf968f30063c0251e242a9f13b9b8661
 <% end %>

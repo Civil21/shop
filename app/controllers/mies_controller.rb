@@ -10,7 +10,7 @@ class MiesController < ApplicationController
 
   def update
     # @user.attributes = user_params
-    @user.update(user_params)
+    @user.update_attributes(user_params)
     redirect_to my_path
   end
 
