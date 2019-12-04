@@ -13,6 +13,7 @@
   }
 }
 
+
 .vertical-nav {
   min-width: 17rem;
   width: 17rem;
@@ -316,7 +317,26 @@ input:placeholder {
   width: 100%;
 }
 
+.rozdil{
+  display: block!important;
+  padding: 10px;
+}
 
+.comment{
+  text-align: left;
+  margin: 0.5rem 0;
+  .timer{
+    color: grey;
+    font-size: 12pt;
+  }
+  .text{
+    font-size: 14pt;
+    padding: 0.2rem 0;
+  }
+  .comform{
+    text-align: center;
+  }
+}
 
 /* OTHERS */
 
