@@ -32,10 +32,10 @@
   <div class="rozdil">
     <%= link_to "Замовити", new_product_path(product_id: @product.id), class:'btn btn-success rounded-pill shadow-sm px-4 mb-0' %>
   </div>
-  <div class="comments text-center">
-    <h3>Коментарі</h3>
-    <%= render @product.comments%>
-    <%= render 'comments/form', object:@product %>
   </div>
-  </div>
+</div>
+<div class="comments text-center">
+  <h3>Коментарі</h3>
+  <%= render @product.comments%>
+  <%= render 'comments/form', object:@product %>
 </div>
