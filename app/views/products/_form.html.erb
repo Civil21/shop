@@ -14,29 +14,29 @@
 
   <div class="field">
     <%= form.label "Назва продукту" %><br>
-    <%= form.text_field :name, placeholder: "Назва продукту" %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label "Укажіть теги для продукту" %><br>
-    <%= form.text_field :all_tags, placeholder:"Теги до продукту" %>
+    <%= form.label "Теги для продукту" %><br>
+    <%= form.text_field :all_tags %>
   </div>
 
   <div class="field">
-    <%= form.label "Добавте опис продукту" %><br>
-    <%= form.text_field :desc, placeholder:"Опис продукту" %>
+    <%= form.label "Опис продукту" %><br>
+    <%= form.text_field :desc %>
   </div>
 
   <div class="field">
-    <%= form.label "Укажіть ціну"%><br>
+    <%= form.label "Укажіть ціну, грн."%><br>
     <%= form.text_field :price %>
   </div>
   <div class="field">
     <%= form.label "Фото" %><br>
+    <label for="product_images" class="uploadButton">Загрузити фото</label>
     <%= form.file_field :images, accept: 'image/png,image/gif,image/jpeg', multiple: true %>
   </div>
-
   <div class="actions">
-    <%= form.submit "Створити продукт" %>
+    <%= form.submit "Зберегти" %>
   </div>
 <% end %>

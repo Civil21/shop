@@ -13,6 +13,36 @@
   }
 }
 
+.otopright{
+  position: absolute;
+  font-size: 12pt;
+  right: 2.5rem;
+  font-weight: 800;
+}
+
+.tcard{
+  display: none;
+}
+
+.ttable{
+  display: none;
+}
+
+.active{
+  display: block;
+}
+
+.icons{
+  font-size: 18pt;
+  padding: 0.5rem;
+  &:hover{
+    color: red;
+  }
+  &:active{
+    color: red;
+  }
+}
+
 
 .vertical-nav {
   min-width: 17rem;
@@ -137,9 +167,54 @@ h1.active {
   border-bottom: 2px solid #5fbae9;
 }
 
+label{
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
 
-
+.price{
+  font-weight: 900;
+  color: darkred;
+}
 /* FORM TYPOGRAPHY*/
+
+.uploadButton {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  padding: 10px 30px;
+  margin: 0px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid red;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: red;
+  transition: .2s ease-in-out;
+  &:before {
+    content: "";
+    background: linear-gradient(90deg, rgba(255,255,255,.1), rgba(255,255,255,.5));
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: -8px;
+    left: -75px;
+    transform: skewX(-45deg);
+    }
+  &:hover {
+    background: darkred;
+    color: #fff;
+  }
+  &:hover:before {
+    left: 150px;
+    transition: .5s ease-in-out;
+  }
+}
+
+
+input#product_images{
+  display: none;
+}
 
 input[type=button], input[type=submit], input[type=reset]  {
   background-color: red;
