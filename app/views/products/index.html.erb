@@ -5,6 +5,7 @@
 <table class="table table-dark">
   <thead>
     <tr>
+      <th></th>
       <th>Фото</th>
       <th>Назва</th>
       <th>Опис</th>
@@ -18,6 +19,9 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+        <td>
+          <%=link_to "Замовити",new_product_order_path(product.id)%>
+        </td>
         <td>
           <% if product.images.present?%>
             <%= image_tag product.images.first,width: 250 %>

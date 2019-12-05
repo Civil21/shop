@@ -27,8 +27,14 @@
     </li>
     <li class="nav-item">
       <%=link_to basket_path, class:"nav-link" do %>
+      <% if user_signed_in? && current_user.id ==1 %>
+      <i class="fa fa-shopping-basket mr-2"></i>
+      Активні замовлення
+
+        <%else%>
         <i class="fa fa-shopping-basket mr-2"></i>
         Кошик
+        <%end%>
       <%end%>
     </li>
 

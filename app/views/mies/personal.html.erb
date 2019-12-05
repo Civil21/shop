@@ -17,13 +17,15 @@
             </div>
           <% end %>
 
+          <div class="field">
+            <%= f.input :name, input_html: { class: 'special'}, placeholder:"Ім'я", label: false %>
+          </div>
+
         <div class="field">
           <%= f.input :city, type:"text", input_html: { class: 'special'}, placeholder:"Місто", autofocus: true, autocomplete: "city", label: false %>
         </div>
 
-        <div class="field">
-          <%= f.input :about, input_html: { class: 'special'}, placeholder:"Опишіть себе", as: :text, rows: 5,label: false %>
-        </div>
+
 
 
         <div class="actions">

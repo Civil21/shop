@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   resources :comments, only: %i[create update destroy]
 
-  resources :orders, except: %i[index new create]
+  resources :orders, except: %i[index new create] do
+    member do
+      post 'state/:state', to: 'orders#state', as: 'state'
+    end
+  end
   get 'basket', to: 'orders#index'
 
   resource :my, only: %i[show update] do

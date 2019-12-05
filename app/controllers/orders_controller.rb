@@ -2,13 +2,22 @@
 
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: %i[show update edit destroy]
+  before_action :set_order, only: %i[show update edit destroy state]
 
   def index
-    @orders = current_user.orders
+    @orders = if current_user.id == 1
+                Order.all
+              else
+                current_user.orders
+    end
   end
 
   def show; end
+
+  def state
+    @order.update(state: params[:state])
+    redirect_back(fallback_location: root_path)
+  end
 
   def new
     @order = Order.new

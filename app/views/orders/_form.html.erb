@@ -1,5 +1,26 @@
-Замовлення товару <%= @product.name%>
-<%= simple_form_for(@order, url:product_orders_path)do |f| %>
-  Кількість:<%= f.input :count,input_html: { value: '1',min: '1', step: 'any'} %> * <%= @product.price%> = <div id="sum"><%= @product.price%></div>
+<div class="p-2 p-md-3 p-lg-5">
+
+  <h1>Замовлення товару
+    <%= @product.name%></h1>
+  <%= simple_form_for(@order, url:product_orders_path)do |f| %>
+  <div class="row">
+    Кількість:
+    <div class="col-2">
+      <%= f.input :count ,label: false,input_html: { value: '1',min: '1', step: 'any'} %>
+    </div>
+    <div class="col-1">
+      *
+    </div>
+    <div id="order_price" class="col-1">
+      <%= @product.price%>
+    </div>
+    <div class="col-1">
+      =
+    </div>
+    <div id="order_cost" class="col-1">
+      <%= @product.price%>
+    </div>
+  </div>
   <%= f.button :submit %>
 <% end %>
+</div>

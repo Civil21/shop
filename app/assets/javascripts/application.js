@@ -19,3 +19,14 @@
 //= require popper
 //= require turbolinks
 //= require_tree .
+$(document).on('turbolinks:load', function() {
+      var cost = document.getElementById("order_cost");
+      var price = document.getElementById("order_price");
+      var count = document.getElementById("order_count");
+      console.log()
+
+      $('.order_count').change(function() {
+        console.log(cost)
+        cost.innerText = (price.innerText * count.value).toFixed(2);
+      });
+    });

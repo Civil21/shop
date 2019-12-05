@@ -1,1 +1,14 @@
-<%= order.product.name %> в кількості <%= order.count%>
+<tr>
+  <td>
+    <%=link_to order.product.name , product_path(order.product_id) %>
+  </td>
+  <td>
+    <%= order.count%>
+  </td>
+  <td>
+    <%= order.cost%>
+  </td>
+  <td>
+    <%=order_state(order)%>
+  </td>
+</tr>

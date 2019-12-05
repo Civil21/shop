@@ -1,41 +1,49 @@
 <div class="row p-2 p-md-3 p-lg-5 ">
   <p id="notice"><%= notice %></p>
   <% if @product.images.present?%>
-  <div class="col-12 col-md-4 col-xl-5">
-    <% @product.images.each do |image|  %>
-      <%= image_tag image,width: 200 %>
-    <%end%>
-  </div>
+    <div class="col-12 col-md-4 col-xl-5">
+      <% @product.images.each do |image|  %>
+        <%= image_tag image,width: 200 %>
+      <%end%>
+    </div>
   <%end%>
-<div class="col-12 col-md-8 col-xl-7">
-  <div class="rozdil">
-    <strong>Назва:</strong>
-    <%= @product.name %>
-  </div>
-  <div class="rozdil">
-    <strong>ТЕГИ:</strong>
-    <%= tags(@product) %>
-  </div>
-  <div class="rozdil">
-    <strong>Опис:</strong>
-    <%= @product.desc %>
-  </div>
+  <div class="col-12 col-md-8 col-xl-7">
+    <div class="rozdil">
+      <strong>Назва:</strong>
+      <%= @product.name %>
+    </div>
+    <div class="rozdil">
+      <strong>ТЕГИ:</strong>
+      <%= tags(@product) %>
+    </div>
+    <div class="rozdil">
+      <strong>Опис:</strong>
+      <%= @product.desc %>
+    </div>
 
-  <div class="rozdil">
-    <strong>Ціна:</strong>
-    <%= @product.price %> грн.
-  </div>
-  <div class="rozdil">
-    <%= link_to 'Редагувати', edit_product_path(@product) %> |
-    <%= link_to 'Повернутися назад', products_path %>
-  </div>
-  <div class="rozdil">
-    <%= link_to "Замовити", new_product_path(product_id: @product.id), class:'btn btn-success rounded-pill shadow-sm px-4 mb-0' %>
-  </div>
+    <div class="rozdil">
+      <strong>Ціна:</strong>
+      <%= @product.price %>
+      грн.
+    </div>
+
+    <div class="rozdil">
+      <%if current_user.id == 1 %>
+        <%= link_to 'Редагувати', edit_product_path(@product) %>
+        |
+      <%end%>
+      <%= link_to 'Повернутися назад', products_path %>
+    </div>
+
+    <div class="rozdil">
+      <%= link_to "Замовити", new_product_order_path(@product.id), class:'btn btn-success rounded-pill shadow-sm px-4 mb-0' %>
+    </div>
+
   </div>
 </div>
+</div>
 <div class="comments text-center">
-  <h3>Коментарі</h3>
-  <%= render @product.comments%>
-  <%= render 'comments/form', object:@product %>
+<h3>Коментарі</h3>
+<%= render @product.comments%>
+<%= render 'comments/form', object:@product %>
 </div>
