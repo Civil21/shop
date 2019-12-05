@@ -1,5 +1,5 @@
 <div class="card card-body comment" id="comment_<%=comment.id%>">
-  <span><%=comment.user.email%></span>
+  <span><%=comment.user.name%></span>
   <span class="timer"><%=time_ago_in_words(comment.created_at) %> ago</span>
   <div class="text"><%=comment.text%></div>
   <a data-toggle="collapse" href="#collapseComment<%=comment.id%>" role="button" aria-expanded="false" aria-controls="collapseExample">
