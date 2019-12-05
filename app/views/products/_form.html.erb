@@ -13,17 +13,17 @@
   <% end %>
 
   <div class="field">
-    <%= form.label "Назва продукту" %><br>
+    <%= form.label "Назва" %><br>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label "Теги для продукту" %><br>
+    <%= form.label "Теги" %><br>
     <%= form.text_field :all_tags %>
   </div>
 
   <div class="field">
-    <%= form.label "Опис продукту" %><br>
+    <%= form.label "Опис" %><br>
     <%= form.text_field :desc %>
   </div>
 
@@ -32,7 +32,7 @@
     <%= form.text_field :price %>
   </div>
   <div class="field">
-    <%= form.label "Фото" %><br>
+    <br>
     <label for="product_images" class="uploadButton">Загрузити фото</label>
     <%= form.file_field :images, accept: 'image/png,image/gif,image/jpeg', multiple: true %>
   </div>

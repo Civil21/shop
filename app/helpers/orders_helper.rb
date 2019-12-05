@@ -4,11 +4,10 @@ module OrdersHelper
   def order_state(order)
     case order.state
     when 'active'
-      if user_signed_in? && current_user.id == 1
-        link_to 'Підтвердити замовлення', state_order_path(order.id, 'order'), method: :post
-      else
-        link_to 'видалити', order_path(order.id), method: :delete
-      end
+      [
+        link_to( 'Підтвердити замовлення', state_order_path(order.id, 'order'), method: :post),
+        link_to( 'видалити', order_path(order.id), method: :delete)
+      ].join(" ").html_safe
     when 'order'
       if user_signed_in? && current_user.id == 1
         link_to 'Підтвердити відпралвення', state_order_path(order.id, 'sent'), method: :post
