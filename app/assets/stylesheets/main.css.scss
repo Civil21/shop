@@ -81,9 +81,10 @@
 }
 
 .tags{
+  margin: 1rem 0;
   width: 100%;
   text-align: center;
-  border: 1px solid grey;
+  border: 0px solid grey;
   border-radius: 15px;
   font-weight: 900;
   padding: .5rem;
@@ -92,6 +93,14 @@
 }
 
 @media (max-width: 768px) {
+
+  .card{
+    min-width: 15rem;
+  }
+
+  .icons{
+    display: none;
+  }
   #sidebar {
     margin-left: -17rem;
   }
