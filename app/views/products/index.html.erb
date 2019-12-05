@@ -1,44 +1,84 @@
 <p id="notice"><%= notice %></p>
+<h1 class="text-center">  <div class="otopright">
+    <span class="icons" id="tcard"><i class="fa fa-columns"></i></span>
+    <span class="icons" id="ttable"><i class="fa fa-th-list"></i></span>
+  </div>
+  Товари
 
-<h1 class="text-center">Товари</h1>
+</h1>
 
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Фото</th>
-      <th>Назва</th>
-      <th>Опис</th>
-      <th>Ціна</th>
-      <% if user_signed_in? && current_user.id ==1 %>
-        <th colspan="10"></th>
-      <%end%>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="tcard active">
+  <div class="row p-3">
     <% @products.each do |product| %>
+    <div class="col-12 col-md-4 col-lg-3 text-center justify-content-center">
+      <div class="card" style="width: 100%;">
+        <% if product.images.present?%>
+          <%= image_tag product.images.first,width: 100, class: "card-img-top" %>
+        <%end%>
+        <div class="card-body text-center">
+          <h5 class="card-title">
+            <%= link_to product do %>
+              <%= product.name %>
+            <%end%>
+          </h5>
+          <p class="card-text price"><%= product.price %> грн.</p>
+          <%= link_to "Замовити", new_product_order_path(product.id), class:'uploadButton ' %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<div class="ttable">
+  <table class="table table-dark text-center">
+    <thead>
       <tr>
-        <td>
-          <%=link_to "Замовити",new_product_order_path(product.id)%>
-        </td>
-        <td>
-          <% if product.images.present?%>
-            <%= image_tag product.images.first,width: 250 %>
+        <th>Фото</th>
+        <th>Назва</th>
+        <th>Опис</th>
+        <th>Ціна</th>
+        <% if user_signed_in? && current_user.id ==1 %>
+          <th colspan="10"></th>
+        <%end%>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td>
+            <% if product.images.present?%>
+              <%= image_tag product.images.first,width: 250 %>
+            <%end%>
+          </td>
+          <td>
+          <%= link_to product do %>
+            <%= product.name %>
           <%end%>
         </td>
-        <td>
-          <%= link_to product do %>
-          <%= product.name %>
+        <td><%= product.desc %></td>
+        <td><%= product.price %> грн.</td>
+        <% if user_signed_in? && current_user.id ==1 %>
+          <td><%= link_to 'Edit', edit_product_path(product) %>
+            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%else%>
+          <td>
+            <%=link_to "Замовити",new_product_order_path(product.id)%>
+          </td>
         <%end%>
-      </td>
-      <td><%= product.desc %></td>
-      <td><%= product.price %> грн.</td>
-      <% if user_signed_in? && current_user.id ==1 %>
-        <td><%= link_to 'Edit', edit_product_path(product) %>
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <%end%>
-    </tr>
-  <% end %>
-</tbody>
-</table>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+</div>
+
+<script>
+  $("#tcard").on("click", function(){
+    $(".ttable").removeClass("active");
+    $(".tcard").addClass("active");
+  });
+  $("#ttable").on("click", function(){
+    $(".tcard").removeClass("active");
+    $(".ttable").addClass("active");
+  });
+</script>

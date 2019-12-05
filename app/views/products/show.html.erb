@@ -1,13 +1,19 @@
-<div class="row p-2 p-md-3 p-lg-5 ">
-  <p id="notice"><%= notice %></p>
+<div class="row p-2 p-md-3 p-lg-5">
   <% if @product.images.present?%>
-    <div class="col-12 col-md-4 col-xl-5">
+    <div class="col-12 col-md-4 col-xl-5 text-center">
       <% @product.images.each do |image|  %>
         <%= image_tag image,width: 200 %>
       <%end%>
     </div>
   <%end%>
   <div class="col-12 col-md-8 col-xl-7">
+    <div class="rozdil">
+      <%if current_user.id == 1 %>
+        <%= link_to 'Редагувати', edit_product_path(@product) %>
+        |
+      <%end%>
+      <%= link_to 'Повернутися назад', products_path %>
+    </div>
     <div class="rozdil">
       <strong>Назва:</strong>
       <%= @product.name %>
@@ -23,22 +29,13 @@
 
     <div class="rozdil">
       <strong>Ціна:</strong>
-      <%= @product.price %>
-      грн.
+      <span class="price">
+        <%= @product.price %> грн.
+      </span>
     </div>
-
     <div class="rozdil">
-      <%if current_user.id == 1 %>
-        <%= link_to 'Редагувати', edit_product_path(@product) %>
-        |
-      <%end%>
-      <%= link_to 'Повернутися назад', products_path %>
+      <%= link_to "Замовити", new_product_order_path(@product.id), class:'uploadButton ' %>
     </div>
-
-    <div class="rozdil">
-      <%= link_to "Замовити", new_product_order_path(@product.id), class:'btn btn-success rounded-pill shadow-sm px-4 mb-0' %>
-    </div>
-
   </div>
 </div>
 </div>
