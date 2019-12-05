@@ -1,4 +1,4 @@
-<div class="row p-2 p-md-3 p-lg-5">
+<div class="row p-2 p-md-3 p-lg-4">
   <% if @product.images.present?%>
     <div class="col-12 col-md-4 col-xl-5 text-center">
       <% @product.images.each do |image|  %>
@@ -38,7 +38,7 @@
     </div>
   </div>
 </div>
-</div>
+
 <div class="comments text-center">
 <h3>Коментарі</h3>
 <%= render @product.comments%>

@@ -9,30 +9,13 @@
 
 <div class="tcard active">
   <div class="row p-3">
-    <% @products.each do |product| %>
-    <div class="col-12 col-md-4 col-lg-3 text-center justify-content-center">
-      <div class="card" style="width: 100%;">
-        <% if product.images.present?%>
-          <%= image_tag product.images.first,width: 100, class: "card-img-top" %>
-        <%end%>
-        <div class="card-body text-center">
-          <h5 class="card-title">
-            <%= link_to product do %>
-              <%= product.name %>
-            <%end%>
-          </h5>
-          <p class="card-text price"><%= product.price %> грн.</p>
-          <%= link_to "Замовити", new_product_order_path(product.id), class:'uploadButton ' %>
-        </div>
-      </div>
-    </div>
-    <% end %>
+    <%=render @products %>
   </div>
 </div>
 
 <div class="ttable">
-  <table class="table table-dark text-center">
-    <thead>
+  <table class="table table-striped table-active">
+    <thead class="thead-dark">
       <tr>
         <th>Фото</th>
         <th>Назва</th>
