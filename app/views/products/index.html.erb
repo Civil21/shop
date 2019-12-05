@@ -21,9 +21,7 @@
         <th>Назва</th>
         <th>Опис</th>
         <th>Ціна</th>
-        <% if user_signed_in? && current_user.id ==1 %>
           <th colspan="10"></th>
-        <%end%>
       </tr>
     </thead>
 
@@ -47,7 +45,7 @@
             <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%else%>
           <td>
-            <%=link_to "Замовити",new_product_order_path(product.id)%>
+            <%= link_to "Замовити", new_product_order_path(product.id), class:'uploadButton ' %>
           </td>
         <%end%>
       </tr>
