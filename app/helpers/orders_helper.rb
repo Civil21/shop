@@ -21,9 +21,9 @@ module OrdersHelper
         link_to 'Підтвердити доставку', order_path(order.id), method: :delete
       end
     when 'canceled'
-      "Відмінено #{order.updated_at}"
+      "Відмінено #{order.updated_at.strftime("%d %b, %Y o %H:%M")}"
     when 'delivered'
-      "Доставленно #{order.updated_at}"
+      "Доставленно #{order.updated_at.strftime("%d %b, %Y o %H:%M")}"
     end
   end
 end
