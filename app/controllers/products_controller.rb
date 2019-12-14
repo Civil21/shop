@@ -4,10 +4,31 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new create edit update destroy]
 
+  def sort
+    pp sort_name = params[:name]
+    session['sort_type'] = if session['sort_name'] == sort_name && session['sort_type'] != 'ASC'
+                             'ASC'
+                           else
+                             'DESC'
+                            end
+    if %w[name created_at price].include?(sort_name)
+      session['sort_name'] = sort_name
+    end
+    redirect_back(fallback_location: root_path)
+  end
+
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = if params[:q].present?
+                  Product.where('name LIKE ?', "%#{params[:q]}%")
+                else
+                  Product.all
+      end
+
+    unless session['sort_name'].nil?
+      @products = @products.order("#{session['sort_name']} #{session['sort_type']}")
+    end
   end
 
   # GET /products/1

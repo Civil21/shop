@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   root 'products#index'
+  post 'sort/:name', to: 'products#sort', as: 'sort'
   resources :products do
     resources :orders, only: %i[new create]
   end
