@@ -18,6 +18,13 @@
       <div class="tab-pane fade show active" id="pills-active" role="tabpanel" aria-labelledby="pills-active-tab">
         <table class="table">
           <thead>
+            <tr>
+              <th>Назва</th>
+              <th>Кількість</th>
+              <th>Ціна</th>
+              <th>Оплата</th>
+              <th>Дії над замовленням</th>
+            </tr>
           </thead>
             <tbody>
               <%= render @orders.active%>
@@ -27,6 +34,13 @@
       <div class="tab-pane fade" id="pills-order" role="tabpanel" aria-labelledby="pills-order-tab">
         <table class="table">
           <thead>
+            <tr>
+              <th>Назва</th>
+              <th>Кількість</th>
+              <th>Ціна</th>
+              <th>Оплата</th>
+              <th>Дії над замовленням</th>
+            </tr>
           </thead>
             <tbody>
               <%= render @orders.ordered%>
@@ -36,6 +50,13 @@
       <div class="tab-pane fade" id="pills-old" role="tabpanel" aria-labelledby="pills-old-tab">
         <table class="table">
           <thead>
+            <tr>
+              <th>Назва</th>
+              <th>Кількість</th>
+              <th>Ціна</th>
+              <th>Оплата</th>
+              <th>Дії над замовленням</th>
+            </tr>
           </thead>
             <tbody>
               <%= render @orders.old%>

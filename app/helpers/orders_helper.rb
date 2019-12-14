@@ -6,7 +6,7 @@ module OrdersHelper
     when 'active'
       [
         link_to( 'Підтвердити замовлення', state_order_path(order.id, 'order'), method: :post),
-        link_to( 'видалити', order_path(order.id), method: :delete)
+        link_to( '| Видалити', order_path(order.id), method: :delete)
       ].join(" ").html_safe
     when 'order'
       if user_signed_in? && current_user.id == 1
