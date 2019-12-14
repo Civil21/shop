@@ -1,30 +1,68 @@
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="pills-active-tab" data-toggle="pill" href="#pills-active" role="tab" aria-controls="pills-active" aria-selected="true">Активні</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-order-tab" data-toggle="pill" href="#pills-order" role="tab" aria-controls="pills-order" aria-selected="false">Замовленні</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="pills-old-tab" data-toggle="pill" href="#pills-old" role="tab" aria-controls="pills-old" aria-selected="false">Старі</a>
-  </li>
-</ul>
+<div class="p-4">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-active-tab" data-toggle="pill" href="#pills-active" role="tab" aria-controls="pills-active" aria-selected="true">Активні</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-order-tab" data-toggle="pill" href="#pills-order" role="tab" aria-controls="pills-order" aria-selected="false">Замовленні</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-old-tab" data-toggle="pill" href="#pills-old" role="tab" aria-controls="pills-old" aria-selected="false">Старі</a>
+    </li>
+  </ul>
 
-<div class="tab-pane fade show active" id="pills-active" role="tabpanel" aria-labelledby="pills-active-tab">
-  <div class="tab-content" id="pills-tabContent">
+<div class="tab-content" id="pills-tabContent">
 
-    <%= render @orders.active%>
+
+
+      <div class="tab-pane fade show active" id="pills-active" role="tabpanel" aria-labelledby="pills-active-tab">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Назва</th>
+              <th>Кількість</th>
+              <th>Ціна</th>
+              <th>Оплата</th>
+              <th>Дії над замовленням</th>
+            </tr>
+          </thead>
+            <tbody>
+              <%= render @orders.active%>
+            </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="pills-order" role="tabpanel" aria-labelledby="pills-order-tab">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Назва</th>
+              <th>Кількість</th>
+              <th>Ціна</th>
+              <th>Оплата</th>
+              <th>Дії над замовленням</th>
+            </tr>
+          </thead>
+            <tbody>
+              <%= render @orders.ordered%>
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane fade" id="pills-old" role="tabpanel" aria-labelledby="pills-old-tab">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Назва</th>
+              <th>Кількість</th>
+              <th>Ціна</th>
+              <th>Оплата</th>
+              <th>Дії над замовленням</th>
+            </tr>
+          </thead>
+            <tbody>
+              <%= render @orders.old%>
+          </tbody>
+        </table>
+      </div>
 
   </div>
-  <div class="tab-pane fade" id="pills-order" role="tabpanel" aria-labelledby="pills-order-tab">
-
-    <%= render @orders.ordered%>
-
-  </div>
-  <div class="tab-pane fade" id="pills-old" role="tabpanel" aria-labelledby="pills-old-tab">
-
-    <%= render @orders.old%>
-
-  </div>
-
 </div>

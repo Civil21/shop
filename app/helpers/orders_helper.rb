@@ -6,7 +6,7 @@ module OrdersHelper
     when 'active'
       [
         link_to( 'Підтвердити замовлення', state_order_path(order.id, 'order'), method: :post),
-        link_to( 'видалити', order_path(order.id), method: :delete)
+        link_to( '| Видалити', order_path(order.id), method: :delete)
       ].join(" ").html_safe
     when 'order'
       if user_signed_in? && current_user.id == 1
@@ -21,9 +21,9 @@ module OrdersHelper
         link_to 'Підтвердити доставку', order_path(order.id), method: :delete
       end
     when 'canceled'
-      "Відмінено #{order.updated_at}"
+      "Відмінено #{order.updated_at.strftime("%d %b, %Y o %H:%M")}"
     when 'delivered'
-      "Доставленно #{order.updated_at}"
+      "Доставленно #{order.updated_at.strftime("%d %b, %Y o %H:%M")}"
     end
   end
 end

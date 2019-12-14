@@ -13,6 +13,10 @@
   }
 }
 
+.form-control{
+    width: 90%!important;
+}
+
 .otopright{
   position: absolute;
   font-size: 12pt;
@@ -437,6 +441,9 @@ input:placeholder {
   }
 }
 
+.nav-link.active{
+  background-color: darkred!important;
+}
 
 /* OTHERS */
 

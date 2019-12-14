@@ -1,11 +1,13 @@
-<div class="p-2 p-md-3 p-lg-5">
+<div class="p-2 p-md-3 p-lg-5 text-center">
 
   <h1>Замовлення товару
-    <%= @product.name%></h1>
+    <b><%= @product.name%></b></h1>
   <%= simple_form_for(@order, url:product_orders_path)do |f| %>
-  <div class="row">
+  <div class="row p-4 text-center align-item-center">
+    <div class="col-0 col-md-2">
+      </div>
     Кількість:
-    <div class="col-2">
+    <div class="col-4 col-md-2">
       <%= f.input :count ,label: false,input_html: { value: '1',min: '1', step: 'any'} %>
     </div>
     <div class="col-1">
@@ -17,9 +19,10 @@
     <div class="col-1">
       =
     </div>
-    <div id="order_cost" class="col-1">
+    <div id="order_cost" class="col-2">
       <%= @product.price%>
     </div>
+    грн.
   </div>
   <%= f.button :submit %>
 <% end %>
