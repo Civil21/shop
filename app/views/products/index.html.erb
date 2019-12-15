@@ -31,14 +31,8 @@
   <table class="table table-striped table-active">
     <thead class="thead-dark">
       <tr>
-        <th>Фото</th>
-        <th>
-          <%=link_to sort_path("name"), method: :post, class:"nav-link" do %>Назва
-          <%if session[:sort_name]=="name"%>
-            <i class="<%if session[:sort_type]=="DESC"%>fa fa-angle-up<%else%>fa fa-angle-down <%end%>"></i>
-          <%end%>
-        <%end%>
-      </th>
+      <th>Фото</th>
+      <th>Назва</th>
       <th>Опис</th>
       <th>Ціна</th>
       <th colspan="10"></th>
