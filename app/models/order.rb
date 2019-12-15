@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   after_create :set_cost
 
   def set_cost
-    cost = product.price * count
+    update(cost: (product.price * count))
   end
 
   scope :active, -> { where(state: 'active') }

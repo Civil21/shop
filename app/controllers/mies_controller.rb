@@ -6,6 +6,7 @@ class MiesController < ApplicationController
 
   def show
     @products = Product.all
+    pp @last_view_product = Product.where(id: session[:view_products])
   end
 
   def update

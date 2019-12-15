@@ -5,7 +5,6 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def sort
-    pp sort_name = params[:name]
     session['sort_type'] = if session['sort_name'] == sort_name && session['sort_type'] != 'ASC'
                              'ASC'
                            else
@@ -33,7 +32,14 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   # GET /products/1.json
-  def show; end
+  def show
+    s = session[:view_products]
+    s ||= []
+    s.push(@product.id)
+    s.uniq!
+    s.shift(@product.id) if s.count > 4
+    session[:view_products] = s
+  end
 
   # GET /products/new
   def new
