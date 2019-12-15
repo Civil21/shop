@@ -39,6 +39,11 @@ class ProductsController < ApplicationController
     s.uniq!
     s.shift(@product.id) if s.count > 4
     session[:view_products] = s
+    ids = []
+    @product.categories.collect { |category| category.products.each { |product| ids.push product.id } }
+    ids.uniq!
+    ids.delete(@product.id)
+    @like_products = Product.where(id: ids).limit(3)
   end
 
   # GET /products/new
