@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def sort
-    session['sort_type'] = if session['sort_name'] == sort_name && session['sort_type'] != 'ASC'
+    pp 'render sort'
+    sort_name = params[:name]
+    session['sort_type'] = if session['sort_name'] && session['sort_name'] == sort_name && session['sort_type'] != 'ASC'
                              'ASC'
                            else
                              'DESC'
@@ -13,21 +15,15 @@ class ProductsController < ApplicationController
     if %w[name created_at price].include?(sort_name)
       session['sort_name'] = sort_name
     end
-    redirect_back(fallback_location: root_path)
+    search_and_sort
   end
 
   # GET /products
   # GET /products.json
-  def index
-    @products = if params[:q].present?
-                  Product.where('name LIKE ?', "%#{params[:q]}%")
-                else
-                  Product.all
-      end
 
-    unless session['sort_name'].nil?
-      @products = @products.order("#{session['sort_name']} #{session['sort_type']}")
-    end
+  def index
+    pp 'render index'
+    search_and_sort
   end
 
   # GET /products/1
@@ -128,6 +124,17 @@ class ProductsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def search_and_sort
+    @products = if params[:q].present?
+                  Product.where('name LIKE ?', "%#{params[:q]}%")
+                else
+                  Product.all
+    end
+    unless session['sort_name'].nil?
+      @products.order!("#{session['sort_name']} #{session['sort_type']}")
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

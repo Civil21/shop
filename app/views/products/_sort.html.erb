@@ -1,0 +1,30 @@
+<div id="sort_line">
+  <ul class="nav nav-tabs justify-content-end">
+    <li class="nav-item <%if session[:sort_name]=="name"%>active<%end%>">
+      <button type="button" name="button" class="nav-link sort" id="name">
+Назва
+    <%if session[:sort_name]=="name"%>
+      <i class="<%if session[:sort_type]=="DESC"%>fa fa-angle-up<%else%>fa fa-angle-down <%end%>"></i>
+    <%end%>
+
+</button>
+</li>
+<li class="nav-item <%if session[:sort_name]=="price"%>active<%end%>">
+  <button type="button" name="button" class="nav-link sort" id="price">
+  Ціна
+    <%if session[:sort_name]=="price"%>
+  <i class="<%if session[:sort_type]=="DESC"%>fa fa-angle-up<%else%>fa fa-angle-down <%end%>"></i>
+<%end%>
+</button>
+</li>
+<li class="nav-item <%if session[:sort_name]=="created_at"%>active<%end%>">
+  <button type="button" name="button" class="nav-link sort" id="created_at">
+
+Дата створення
+<%if session[:sort_name]=="created_at"%>
+<i class="<%if session[:sort_type]=="DESC"%>fa fa-angle-up<%else%>fa fa-angle-down <%end%>"></i>
+<%end%>
+</button>
+</li>
+</ul>
+</div>

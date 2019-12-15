@@ -1,0 +1,25 @@
+<% products.each do |product| %>
+<tr>
+  <td>
+    <% if product.images.present?%>
+      <%= image_tag product.images.first,width: 250 %>
+    <%end%>
+  </td>
+  <td>
+    <%= link_to product do %>
+    <%= product.name %>
+  <%end%>
+</td>
+<td><%= product.desc %></td>
+<td><%= product.price %>
+  грн.</td>
+<% if user_signed_in? && current_user.id ==1 %>
+  <td><%= link_to 'Edit', edit_product_path(product) %>
+    <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%else%>
+  <td>
+    <%= link_to "Замовити", new_product_order_path(product.id), class:'uploadButton ' %>
+  </td>
+<%end%>
+</tr>
+<%end%>

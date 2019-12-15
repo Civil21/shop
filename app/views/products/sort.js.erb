@@ -1,0 +1,6 @@
+$('#products').empty();
+$('#products').html('<%= j render @products%>');
+$('#products_line').empty();
+$('#products_line').html('<%= j render "products/products_line", products:@products%>');
+$('#sort_line').empty();
+$('#sort_line').html('<%= j render "products/sort"%>');

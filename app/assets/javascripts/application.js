@@ -19,14 +19,22 @@
 //= require popper
 //= require turbolinks
 //= require_tree .
+function sort(event) {
+  $.ajax({
+    url: '/sort',
+    type: 'GET',
+    dataType: 'script',
+    data: {
+      name: event.target.id
+    }
+  });
+}
 $(document).on('turbolinks:load', function() {
-      var cost = document.getElementById("order_cost");
-      var price = document.getElementById("order_price");
-      var count = document.getElementById("order_count");
-      console.log()
+  var cost = document.getElementById("order_cost");
+  var price = document.getElementById("order_price");
+  var count = document.getElementById("order_count");
 
-      $('.order_count').change(function() {
-        console.log(cost)
-        cost.innerText = (price.innerText * count.value).toFixed(2);
-      });
-    });
+  $('.order_count').change(function() {
+    cost.innerText = (price.innerText * count.value).toFixed(2);
+  });
+});
