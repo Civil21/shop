@@ -1,12 +1,14 @@
 <div class="row p-2 p-md-3 p-lg-4">
+  <div class="col-12 col-md-12 col-lg-9">
   <% if @product.images.present?%>
-    <div class="col-12 col-md-4 col-xl-5 text-center">
+    <div class="row" >
+    <div class="col-12 col-md-5 col-xl-4 text-center">
       <% @product.images.each do |image|  %>
-        <%= image_tag image,width: 200 %>
+        <%= image_tag image,width: 250 %>
       <%end%>
     </div>
   <%end%>
-  <div class="col-12 col-md-8 col-xl-7">
+  <div class="col-12 col-md-7 col-xl-8">
     <div class="rozdil">
       <%if current_user.id == 1 %>
         <%= link_to 'Редагувати', edit_product_path(@product) %>
@@ -19,7 +21,7 @@
       <%= @product.name %>
     </div>
     <div class="rozdil">
-      <strong>ТЕГИ:</strong>
+      <strong>Категорії:</strong>
       <%= tags(@product) %>
     </div>
     <div class="rozdil">
@@ -37,14 +39,32 @@
       <%= link_to "Замовити", new_product_order_path(@product.id), class:'uploadButton ' %>
     </div>
   </div>
-</div>
-<div class="row">
-  <h3>Подібні</h3>
-  <%=render @like_products%>
-</div>
-
-<div class="comments text-center">
-<h3>Коментарі</h3>
-<%= render @product.comments%>
-<%= render 'comments/form', object:@product %>
+    <div class="col-12 comments text-center">
+    <h3>Коментарі</h3>
+    <%= render @product.comments%>
+    <%= render 'comments/form', object:@product %>
+    </div>
+  </div>
+  </div>
+  <div class="col-12 col-md-12 col-lg-3 text-center">
+    <h3 class="text-center">Вам також сподобаються:</h3>
+    <div class="row">
+      <% @like_products.each do |product|%>
+      <div class="card" style="width: 100%;">
+        <% if product.images.present?%>
+          <%= image_tag product.images.first,width: "100px", class: "card-img-top" %>
+        <%end%>
+        <div class="card-body text-center">
+          <h5 class="card-title">
+            <%= link_to product do %>
+              <%= product.name %>
+            <%end%>
+          </h5>
+          <p class="card-text price"><%= product.price %> грн.</p>
+          <%= link_to "Замовити", new_product_order_path(product.id), class:'uploadButton ' %>
+        </div>
+      </div>
+      <%end%>
+    </div>
+  </div>
 </div>
