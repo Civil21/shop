@@ -18,7 +18,7 @@ module OrdersHelper
       if user_signed_in? && current_user.id == 1
         link_to 'Відмінити', state_order_path(order.id, 'canceled'), method: :post
       else
-        link_to 'Підтвердити доставку', order_path(order.id), method: :delete
+        link_to 'Підтвердити доставку', state_order_path(order.id, 'delivered'), method: :post
       end
     when 'canceled'
       "Відмінено #{order.updated_at.strftime("%d %b, %Y o %H:%M")}"

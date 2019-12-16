@@ -21,12 +21,13 @@
             <%= f.input :name, input_html: { class: 'special'}, placeholder:"Ім'я та Фамілія", label: false %>
           </div>
 
+          <div class="field">
+            <%= f.input :phone, input_html: { class: 'special'}, placeholder:"+380*********", label: false %>
+          </div>
+
         <div class="field">
           <%= f.input :city, type:"text", input_html: { class: 'special'}, placeholder:"Адреса для доставки", autofocus: true, autocomplete: "city", label: false %>
         </div>
-
-
-
 
         <div class="actions">
           <%= f.submit "Продовжити" %>

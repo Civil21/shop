@@ -23,7 +23,7 @@
     <li class="nav-item">
       <%= link_to categories_path, class:"nav-link" do %>
           <i class="fa fa-tags mr-2"></i>
-          Теги
+          Категорії
       <%end%>
     </li>
     <li class="nav-item">
@@ -38,7 +38,9 @@
         <%end%>
       <%end%>
     </li>
-
+    <li class="nav-item ">
+      <a href="phone:+380663477974" class="nav-link"><i class="fa fa-phone mr-2"></i>+380663477974</a>
+    </li>
   </ul>
   <br>
   <p class="text-gray font-weight-bold text-uppercase px-3 pb-4 mb-0">Профіль</p>
@@ -54,7 +56,7 @@
       <% if current_user.id ==1 %>
       <%= link_to new_product_path, class:"nav-link"  do%>
         <i class="fa fa-plus-circle mr-2"></i>
-        Добавити продукт
+        Добавити товар
       <%end%>
       <%end%>
     </li>

@@ -26,6 +26,6 @@ class MiesController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:city, :name)
+    params.require(:user).permit(:city, :name, :phone)
   end
 end
