@@ -44,10 +44,12 @@ gem 'devise'
 # css/js
 gem 'bootstrap', '~> 4.3.1'
 gem 'bootstrap-select-rails'
+gem 'font-awesome-rails'
 gem 'jquery-rails'
-gem "font-awesome-rails"
 
 gem 'simple_form'
+
+gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
