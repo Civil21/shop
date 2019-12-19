@@ -82,6 +82,10 @@
 
 .card{
   margin-bottom: 0.5rem;
+  .card-img-top{
+    width: 70%;
+    margin: 0 auto;
+  }
 }
 
 .tags{
@@ -92,9 +96,13 @@
   border-radius: 15px;
   font-weight: 900;
   padding: .5rem;
-  background-color: #123;
+  background-color: #343a40;
   color: white;
+  &:hover{
+    background-color: darkred;
+  }
 }
+
 
 @media (max-width: 768px) {
 
@@ -246,7 +254,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   background-color: red;
   border: none;
   color: white;
-  padding: 15px 80px;
+  padding: 20px 0;
   text-align: center;
   text-decoration: none;
   display: inline-block;
